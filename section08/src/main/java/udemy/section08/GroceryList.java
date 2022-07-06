@@ -17,25 +17,54 @@ public class GroceryList {
         }
     }
 
-    public void modifyGroceryItem(int position, String newItem) {
+    private void modifyGroceryItem(int position, String newItem) {
         String prevItem = groceryList.get(position);
         groceryList.set(position, newItem);
-        System.out.printf("%d. %s >> %s", (position + 1), prevItem, newItem);
+        System.out.printf("%s has been changed to %s", prevItem, newItem);
     }
 
-    public String removeGroceryItem(int position) {
+    public void modifyGroceryItem(String oldItem, String newItem) {
+        int position = findItem(oldItem.toLowerCase());
+        if (position >= 0) {
+            modifyGroceryItem(position, newItem);
+        } else {
+            System.out.printf("%s cannot be found. ", oldItem);
+        }
+    }
+
+    private String removeGroceryItem(int position) {
         String theItem = groceryList.get(position);
         groceryList.remove(position);
         return theItem;
     }
 
-    public String findItem(String searchItem) {
-        // boolean exists = groceryList.contains(searchItem);
-        int position = groceryList.indexOf(searchItem);
+    public String removeGroceryItem(String item) {
+        int position = findItem(item);
         if (position >= 0) {
-            return groceryList.get(position);
+            String removedItem = removeGroceryItem(position);
+            return removedItem;
+        } else {
+            return null;
         }
 
-        return null;
+    }
+
+    private int findItem(String searchItem) {
+        return groceryList.indexOf(searchItem);
+        // boolean exists = groceryList.contains(searchItem);
+        // int position = groceryList.indexOf(searchItem);
+        // if (position >= 0) {
+        // return groceryList.get(position);
+        // }
+
+        // return null;
+    }
+
+    public boolean onFile(String searchItem) {
+        int position = findItem(searchItem);
+        if (position >= 0) {
+            return true;
+        }
+        return false;
     }
 }
