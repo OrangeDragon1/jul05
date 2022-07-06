@@ -1,5 +1,6 @@
 package udemy.section08;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -86,4 +87,14 @@ public class Main {
             System.out.printf("%s is not found in the grocery list. \n", itemToSearch);
         }
     }
+
+    // public static void processArrayList() {
+    //     ArrayList<String> newArray = new ArrayList<>();
+    //     newArray.addAll(groceryList.getGroceryList());
+
+    //     ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
+
+    //     String[] myArray = new String[groceryList.getGroceryList().size()];
+    //     myArray = groceryList.getGroceryList().toArray(myArray);
+    // }
 }

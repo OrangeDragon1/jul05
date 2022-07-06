@@ -3,7 +3,6 @@ package udemy.section08;
 import java.util.ArrayList;
 
 public class GroceryList {
-    private int[] myNumbers;
     private ArrayList<String> groceryList = new ArrayList<>();
 
     public void addGroceryItem(String item) {
@@ -20,15 +19,15 @@ public class GroceryList {
     private void modifyGroceryItem(int position, String newItem) {
         String prevItem = groceryList.get(position);
         groceryList.set(position, newItem);
-        System.out.printf("%s has been changed to %s", prevItem, newItem);
+        System.out.printf("%s has been changed to %s. \n", prevItem, newItem);
     }
 
     public void modifyGroceryItem(String oldItem, String newItem) {
-        int position = findItem(oldItem.toLowerCase());
+        int position = findItem(oldItem);
         if (position >= 0) {
             modifyGroceryItem(position, newItem);
         } else {
-            System.out.printf("%s cannot be found. ", oldItem);
+            System.out.printf("%s cannot be found. \n", oldItem);
         }
     }
 
@@ -46,7 +45,6 @@ public class GroceryList {
         } else {
             return null;
         }
-
     }
 
     private int findItem(String searchItem) {
@@ -56,7 +54,6 @@ public class GroceryList {
         // if (position >= 0) {
         // return groceryList.get(position);
         // }
-
         // return null;
     }
 
@@ -66,5 +63,9 @@ public class GroceryList {
             return true;
         }
         return false;
+    }
+
+    public ArrayList<String> getGroceryList() {
+        return groceryList;
     }
 }
